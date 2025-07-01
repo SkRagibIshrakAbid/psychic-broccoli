@@ -1,0 +1,9 @@
+pymongo
+python-dotenv
+pandas
+PyQt5
+email-validator
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
+google-api-python-client
