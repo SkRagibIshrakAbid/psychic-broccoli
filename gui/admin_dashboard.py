@@ -11,6 +11,7 @@ class AdminDashboard(QWidget):
         self.db = self.client['bulk_email_app'] if self.client else None
         self.logout_success = None
         self.init_ui()
+        self.center()
         self.load_pending_users()
 
     def init_ui(self):
@@ -35,6 +36,12 @@ class AdminDashboard(QWidget):
         layout.addWidget(self.logout_btn)
         self.setLayout(layout)
         self.setStyleSheet("background: #f7f9fa; font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px;")
+
+    def center(self):
+        qr = self.frameGeometry()
+        cp = self.screen().availableGeometry().center()
+        qr.moveCenter(cp)
+        self.move(qr.topLeft())
 
     def load_pending_users(self):
         self.user_list.clear()

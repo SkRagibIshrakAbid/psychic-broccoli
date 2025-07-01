@@ -12,6 +12,7 @@ class LoginWindow(QWidget):
         self.db = self.client['bulk_email_app'] if self.client else None
         self.logout_success = None
         self.init_ui()
+        self.center()
 
     def init_ui(self):
         layout = QVBoxLayout()
@@ -46,6 +47,12 @@ class LoginWindow(QWidget):
         layout.addWidget(self.reset_btn)
         self.setLayout(layout)
         self.setStyleSheet("background: #f7f9fa; font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px;")
+
+    def center(self):
+        qr = self.frameGeometry()
+        cp = self.screen().availableGeometry().center()
+        qr.moveCenter(cp)
+        self.move(qr.topLeft())
 
     def login(self):
         username = self.username_input.text().strip()

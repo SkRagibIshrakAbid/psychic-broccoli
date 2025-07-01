@@ -26,6 +26,7 @@ class CustomerDashboard(QWidget):
         self.db = self.client['bulk_email_app'] if self.client else None
         self.logout_success = None
         self.init_ui()
+        self.center()
         self.sender_emails = []
         self.failed_emails = []
         self.dest_emails = []
@@ -274,3 +275,14 @@ class CustomerDashboard(QWidget):
     def reset_destinations(self):
         self.dest_emails = []
         self.dest_list.clear()
+
+    def center(self):
+        # Center the window on the screen
+        qr = self.frameGeometry()
+        cp = self.screen().availableGeometry().center()
+        qr.moveCenter(cp)
+        self.move(qr.topLeft())
+
+    def showEvent(self, event):
+        super().showEvent(event)
+        self.center()
